@@ -1,1 +1,142 @@
 <HomeScreenView>
+    md_bg_color: 'gray'
+    #
+    # Header  
+    #
+    MDHeroFrom: 
+        id: hero_header 
+        tag: 'hero_header'
+        size_hint: 1, .15
+        pos_hint: { 'right': 1.0,'top': 1.0 }
+        MDFloatLayout:
+            MDGridLayout:   
+                md_bg_color: app.theme_cls.primary_color
+                size_hint: 1, 1
+                pos_hint: { 'right': 1.0,'top': 1.0 }
+                cols: 3
+                padding: 10
+                #
+                # Image 
+                #
+                MDCard:
+                    id: card_image
+                    size_hint: .25, 1
+                    pos_hint: {'center_x': 0.1,'top': 1 }
+                    radius: 75
+                    md_bg_color: 'black'
+                    elevation: 4
+                    FitImage:
+                        source: root.model.photo_image
+                        radius: card_image.radius 
+                #
+                # Username 
+                #
+                MDBoxLayout:
+                    size_hint: .4, 1
+                    MDLabel:
+                        id: username 
+                        text: root.model.username 
+                        color: 'white'
+                        font_style: 'H3'
+                        font_size: 32
+                        bold: True 
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        valign: 'center'
+                        halign: 'center'
+                #
+                # Renda  
+                #
+                MDBoxLayout:
+                    size_hint: .35, 1
+                    orientation: 'vertical'
+                    MDLabel:
+                        size_hint: 1, .2
+                    MDLabel:
+                        size_hint: 1, .2
+                        text: 'Renda total:'
+                        color: 'white'
+                        font_style: 'H3'
+                        font_size: 20
+                        valign: 'bottom'
+                        halign: 'center'
+                    MDLabel:
+                        id: renda_total
+                        size_hint: 1, .6
+                        text: root.model.renda_total
+                        color:'white'
+                        bold: True 
+                        font_style: 'H3'
+                        font_size: 20
+                        valign: 'top'
+                        halign: 'center'
+    #
+    # Body 
+    #
+    MDBoxLayout:
+        size_hint: .95, .75
+        pos_hint: {'center_x': 0.50,'top': 0.85 }
+        md_bg_color: 'red'
+        MDLabel:
+            text: "Agora é só dale"
+            color: 'red'
+            bold: True 
+            halign: 'center'
+    #
+    # Footer 
+    #
+    MDHeroFrom:
+        id: hero_footer 
+        tag: 'hero_footer'
+        size_hint: 1, 0
+        pos_hint: {'center_x': 0.50,'top': 0 }
+        MDFloatLayout:
+            size_hint: 1, .2
+            MDBottomAppBar:
+                MDTopAppBar:
+                    id: add_profit_button
+                    type: "bottom"
+                    icon: 'plus'
+                    on_action_button: print( 'Add clicked' )
+            
+
+            MDGridLayout:
+                cols: 2
+                size_hint: 1, 1
+                MDBoxLayout:
+                    size_hint: 0.5, 1
+                    pos_hint: {'center_x': 0.5,'left': 0.5} 
+                    orientation: 'vertical'
+                    MDLabel:
+                        size_hint: 0.5, 0.25
+                    MDIconButton: 
+                        id: extrato_icon_button
+                        icon: "alarm-panel-outline"
+                        theme_icon_color: "Custom"
+                        icon_color: "white"  
+                        icon_size: '24sp' 
+                        size_hint: 0.5, 0.4 
+                        pos_hint: {'center_x': 0.5, 'center_y' : 0.5}
+                    MDLabel:
+                        id: extrato_text_button
+                        text: "Extrato"
+                        font_size: 14
+                        theme_text_color: "Custom"
+                        text_color: "white"              
+                        halign: "center"
+                        size_hint: 1, 0.2
+                    MDLabel:
+                        size_hint: 0.5, 0.15
+
+                MDRectangleFlatIconButton:
+                    id: profit_changer_button
+                    size_hint: 0.3, 0.7
+                    pos_hint: {'rigth': 1, 'top' : 0.2 }
+                    text: 'Profit'
+                    icons: 'plus'
+                    md_bg_color: 'pink'
+                    theme_text_color: "Custom"
+                    theme_icon_color: "Custom"
+                    text_color:[0,0,0,0]
+                    line_color: [0,0,0,0]
+                    icon_color: [0,0,0,0]
+                    on_release: print('Profit button')
