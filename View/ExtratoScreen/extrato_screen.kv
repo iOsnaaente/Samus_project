@@ -1,0 +1,21 @@
+<ExtratoScreenView>
+    md_bg_color: 'gray'
+    heroes_to: extrato_header, extrato_footer
+    
+    MDHeroTo: 
+        id: extrato_header
+        tag: 'hero_header'
+        size_hint: 1, .15
+        pos_hint: { 'right': 1.0,'top': 1.0 }
+    
+    BoxLayout:
+        size_hint: 0.975, 0.85
+        pos_hint: {'center_x': 0.5,'center_y': 0.425 }
+        orientation: 'vertical'
+    
+    MDHeroTo:
+        id: extrato_footer
+        tag: 'hero_footer'
+        orientation: 'vertical'
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}

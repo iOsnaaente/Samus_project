@@ -118,10 +118,11 @@
             size_hint: .5, .3
             pos_hint: {'center_x': 0.50,'center_y': 0.50 }
             FitImage:
+                id: logo_image
                 source: root.samus_image 
                 allow_stretch: True 
                 keep_ratio: True
-
+                color: [1,0,0,1]
         #
         # Usuário 
         #
@@ -198,7 +199,7 @@
                     root.model.checkbox_keep_login_data = self.state
                 color_inactive: 'white'
             MDLabel:
-                text: 'Reter usuário e senha?'
+                text: ' usuário e senha?'
                 font_style: 'Subtitle2'
                 pos_hint: {'top': 1 }
                 size_hint: .9, .5

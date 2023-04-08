@@ -5,11 +5,12 @@ from kivy.clock import Clock
 from Model.db.database import Database 
 
 import socket
-SERVER = '160.238.145.93'
+# SERVER = '160.238.145.93'
+SERVER = '127.0.0.1'
 LOGIN_PORT = 50505
 
 
-class LoginScreenModel(BaseScreenModel):
+class LoginModel(BaseScreenModel):
     """
     Implements the logic of the
     :class:`~View.login_screen.LoginScreen.LoginScreenView` class.

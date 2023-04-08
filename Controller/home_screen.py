@@ -8,9 +8,7 @@ import View.HomeScreen.home_screen
 importlib.reload(View.HomeScreen.home_screen)
 
 
-
-
-class HomeScreenController:
+class HomeController:
     """
     The `HomeScreenController` class represents a controller implementation.
     Coordinates work of the view with the model.
@@ -24,3 +22,6 @@ class HomeScreenController:
 
     def get_view(self) -> View.HomeScreen.home_screen:
         return self.view
+
+    def add_profit_button( self ):
+        print( 'Add Bottom Menu Bar Button clicked' )

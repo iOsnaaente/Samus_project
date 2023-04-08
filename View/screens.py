@@ -1,20 +1,30 @@
-# The screens dictionary contains the objects of the models and controllers
+# The screen's dictionary contains the objects of the models and controllers
 # of the screens of the application.
 
+from Model.home import HomeModel
+from Model.login import LoginModel
 
-from Model.login_screen import LoginScreenModel
-from Controller.login_screen import LoginScreenController
-from Model.home_screen import HomeScreenModel
-from Controller.home_screen import HomeScreenController
+from Controller.login_screen import LoginController
+
+from Controller.profit_screen import ProfitController
+from Controller.home_screen import HomeController
+from Controller.extrato_screen import ExtratoController
 
 screens = {
-    "login screen": {
-        "model": LoginScreenModel,
-        "controller": LoginScreenController,
+    'login screen': {
+        'model': LoginModel,
+        'controller': LoginController,
     },
-
-    "home screen": {
-        "model": HomeScreenModel,
-        "controller": HomeScreenController,
+    'profit screen': {
+        'model': HomeModel,
+        'controller': ProfitController,
     },
+    'home screen': {
+        'model': HomeModel,
+        'controller': HomeController,
+    },
+    'extrato screen': {
+        'model': HomeModel,
+        'controller': ExtratoController,
+    }
 }

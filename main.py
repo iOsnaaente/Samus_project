@@ -8,7 +8,7 @@ Config.set("graphics", "height", "750" )
 
 # Place the application window on the right side of the computer screen.
 from kivy.core.window import Window
-Window.left = 1100
+Window.left = 1050
 Window.top = 25
 
 from kivymd.tools.hotreload.app import MDApp
@@ -45,6 +45,19 @@ class Samus(MDApp):
             view.name = name_screen
             self.manager_screens.add_widget(view)
         
+        self.theme_cls.primary_palette = "DeepPurple"
+        self.theme_cls.accent_palette = "DeepOrange"        
+        self.theme_cls.primary_hue = '400'
+        self.theme_cls.theme_style = "Dark"
+        #
+        # DEBUG 
+        #
+        self.manager_screens.current = 'home screen'
+        #
+        # END DEBUG
+        #
+        
+        self.manager_screens.current_heroes = ['hero_header', 'hero_footer']
         return self.manager_screens
     
 
@@ -53,23 +66,18 @@ class Samus(MDApp):
             self.rebuild()
 
 
-    def rebuild(self, *args, **kwargs):        
-        self.manager_screens = MDScreenManager()
-        import View.screens
-        importlib.reload( View.screens )
-        screens = View.screens.screens
-
-        self.manager_screens.clear_widgets() 
-        
-        for i, name_screen in enumerate(screens.keys()):
-            model = screens[name_screen]["model"]()
-            controller = screens[name_screen]["controller"](model)
-            view = controller.get_view()
-            view.manager_screens = self.manager_screens
-            view.name = name_screen
-            self.manager_screens.add_widget(view)
-        return super().rebuild(*args, **kwargs)
-
+    def swipe_screen( self, touch, rigth ):
+        print( rigth )
+        if rigth: 
+            if self.manager_screens.current == 'profit screen':     self.manager_screens.current = 'home screen'
+            elif self.manager_screens.current == 'home screen':     self.manager_screens.current = 'extrato screen'
+            elif self.manager_screens.current == 'extrato screen':  self.manager_screens.current = 'profit screen'
+            self.manager_screens.transition.direction = 'right'
+        else: 
+            if self.manager_screens.current == 'extrato screen':    self.manager_screens.current = 'home screen'
+            elif self.manager_screens.current == 'home screen':     self.manager_screens.current = 'profit screen'
+            else:                                                   self.manager_screens.current = 'extrato screen'
+            self.manager_screens.transition.direction = 'left'
 
 Samus().run()
 

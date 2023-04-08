@@ -4,7 +4,10 @@ from kivy.properties import ObjectProperty
 from kivymd.uix.card import MDCard
 import os 
 
-IMAGE_PATH = os.path.dirname( __file__ ).removesuffix('\\View\\LoginScreen') + '/images'
+from kivy.clock import Clock 
+
+
+IMAGE_PATH = os.path.dirname( __file__ ).removesuffix('\\View\\LoginScreen') + '/assets/images'
 KV_PATH = os.path.dirname( __file__ )
 
 
@@ -14,15 +17,18 @@ class CardNewUser( MDCard ):
 
 
 class LoginScreenView( BaseScreenView ):
-    samus_image = IMAGE_PATH + '/samus.png'
+    # samus_image = IMAGE_PATH + '/samus.png'
     username = ObjectProperty()
     password = ObjectProperty()
 
+    samus_image =  IMAGE_PATH + '/samus.png'   
+
     __debug : bool = True 
+    
 
     def __init__(self, **kw):
         super().__init__(**kw)
-    
+        
     # Tenta iniciar o socket de login
     def on_enter(self, *args):
         self.model.connect_server()

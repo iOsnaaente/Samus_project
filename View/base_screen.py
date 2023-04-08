@@ -1,46 +1,24 @@
 from kivy.properties import ObjectProperty
-
-from kivymd.app import MDApp
 from kivymd.theming import ThemableBehavior
+from gestures4kivy import CommonGestures
 from kivymd.uix.screen import MDScreen
+from kivymd.app import MDApp
 
 from Utility.observer import Observer
 
 
-class BaseScreenView(ThemableBehavior, MDScreen, Observer):
-    """
-    A base class that implements a visual representation of the model data.
-    The view class must be inherited from this class.
-    """
+# Swipe effect  
+class SwipeScreen( MDScreen, CommonGestures ):
+    def cgb_horizontal_page(self, touch, rigth ):
+        MDApp.get_running_app().swipe_screen( touch, rigth )
 
-    controller = ObjectProperty()
-    """
-    Controller object - :class:`~Controller.controller_screen.ClassScreenControler`.
 
-    :attr:`controller` is an :class:`~kivy.properties.ObjectProperty`
-    and defaults to `None`.
-    """
-
-    model = ObjectProperty()
-    """
-    Model object - :class:`~Model.model_screen.ClassScreenModel`.
-
-    :attr:`model` is an :class:`~kivy.properties.ObjectProperty`
-    and defaults to `None`.
-    """
-
+# Screen manager 
+class BaseScreenView( ThemableBehavior, MDScreen, Observer ):
     manager_screens = ObjectProperty()
-    """
-    Screen manager object - :class:`~kivymd.uix.screenmanager.MDScreenManager`.
-
-    :attr:`manager_screens` is an :class:`~kivy.properties.ObjectProperty`
-    and defaults to `None`.
-    """
-
+    controller = ObjectProperty()
+    model = ObjectProperty()
     def __init__(self, **kw):
         super().__init__(**kw)
-        # Often you need to get access to the application object from the view
-        # class. You can do this using this attribute.
         self.app = MDApp.get_running_app()
-        # Adding a view class as observer.
         self.model.add_observer(self)

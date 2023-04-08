@@ -9,7 +9,7 @@ import View.LoginScreen.login_screen
 importlib.reload(View.LoginScreen.login_screen)
 
 
-class LoginScreenController:
+class LoginController:
     """
     The `LoginScreenController` class represents a controller implementation.
     Coordinates work of the view with the model.
